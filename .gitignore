@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+
+# Arquivos de ambiente
+.env
+
+# Logs
+*.log
+
+#Diretórios gerados
+migrations/
+seeders/
+
+# Docker
+docker-compose.override.yml
