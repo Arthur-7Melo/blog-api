@@ -42,9 +42,9 @@ export const findUserByid = async(userId) => {
   }
 };
 
-export const deleteUser = async(userId) => {
+export const deleteUserById = async(userId) => {
   try {
-    const user = await User.destroy({where: {userId}});
+    const user = await User.destroy({where: {id: userId}});
     logger.info("Usuário deletado com Sucesso")
     return user
   } catch (error) {
