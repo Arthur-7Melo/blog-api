@@ -19,3 +19,16 @@ export const createNewPost = async(title, content, userId) => {
   return post;
 };
 
+export const updatePost = async(postId, title, content) => {
+  if (!title || title.length < 3) {
+    throw new Error("Título deve conter pelo menos 3 caracteres");
+  }
+
+  if (!content || content.length < 3) {
+    throw new Error("Conteúdo deve conter pelo menos 3 caracteres");
+  }
+
+  const updatedPost = await updatePostById({title, content}, postId);
+  logger.info(`Post ${postId} atualizado com sucesso`);
+  return updatedPost;
+}
