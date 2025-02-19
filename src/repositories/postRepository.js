@@ -4,7 +4,7 @@ import logger from '../utils/logger.js'
 export const createPost = async(postData) => {
   try {
     const post = await Post.create(postData);
-    logger.info(`Post ${post.tittle} criado com sucesso`);
+    logger.info(`Post ${post.title} criado com sucesso`);
     return post;
   } catch (error) {
     logger.error(`Erro ao criar post: ${error.message}`)
