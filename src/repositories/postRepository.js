@@ -24,9 +24,14 @@ export const findPostsByUserId = async(userId) => {
 
 export const updatePostById = async(postData, id) => {
   try {
-    const post = await Post.update(postData, {where: {id}});
+    const [updatedRows] = await Post.update(postData, {where: {id}});
+    if (updatedRows === 0) {
+      throw new Error(`Post com id: ${id} não encontrado`)
+    }
+
     logger.info(`Post atualizado: ${id}`);
-    return post;
+    const updatedPost = await Post.findByPk(id);
+    return updatedPost;
   } catch (error) {
     logger.error(`Erro ao atualizar post: ${error.message}`);
     throw error;
