@@ -31,4 +31,12 @@ export const updatePost = async(postId, title, content) => {
   const updatedPost = await updatePostById({title, content}, postId);
   logger.info(`Post ${postId} atualizado com sucesso`);
   return updatedPost;
-}
+};
+
+export const deletePostById = async(postId) => {
+  const result = await deletePost(postId);
+  if (!result) {
+    throw new Error("Post não encontrado");
+  }
+  return result;
+};

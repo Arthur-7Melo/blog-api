@@ -1,4 +1,4 @@
-import { createNewPost, updatePost } from "../services/postService.js";
+import { createNewPost, updatePost, deletePostById } from "../services/postService.js";
 import logger from "../utils/logger.js";
 
 export const createPost = async(req, res) => {
@@ -23,4 +23,15 @@ export const updatePostById = async(req, res) => {
     logger.error(`Erro ao atualizar post ${error.message}`);
     res.status(400).json({error: error.message || "Erro interno do servidor"});
   }
-}
+};
+
+export const deletePost = async(req, res) => {
+  try {
+    const { id } = req.params;
+    await deletePostById(id);
+    res.status(204).send();
+  } catch (error) {
+    logger.error(`Erro ao excluir o post ${error.message}`);
+    res.status(400).json({error: error.message || "Erro interno do servidor"});
+  }
+};
