@@ -7,9 +7,10 @@ const Post = sequelize.define("Post", {
     primaryKey: true,
     autoIncrement: true,
   },
-  tittle: {
+  title: {
     type: DataTypes.STRING(35),
     allowNull: false,
+    defaultValue: "Sem título",
     validate: {
       len: {args: [3, 30]}
     },
@@ -18,7 +19,7 @@ const Post = sequelize.define("Post", {
     type: DataTypes.STRING(500),
     allowNull: false,
     validate: {
-      len: {args: [1, 500]}
+      len: {args: [3, 500]}
     },
   },
   userId: {
