@@ -1,4 +1,4 @@
-import Post from '../models/post.js'
+import { Post } from '../models/index.js'
 import logger from '../utils/logger.js'
 
 export const createPost = async(postData) => {
