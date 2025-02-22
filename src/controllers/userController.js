@@ -16,9 +16,9 @@ export const getUser = async(req, res) => {
     }
     
     res.status(200).json(userWithPosts)
-  } catch (err) {
-    logger.error(`Erro ao retornar usuário: ${err.message}`);
-    res.status(500).json({error: "Erro interno do servidor"});
+  } catch (error) {
+    logger.error(`Erro ao retornar usuário: ${error.message}`);
+    res.status(500).json({error: error.message});
   }
 };
 

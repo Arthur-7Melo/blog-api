@@ -5,7 +5,7 @@ import logger from "../utils/logger.js";
 export const getUserWithPosts = async(userId) => {
   const user = await findUserByid(userId);
   if (!user) {
-    throw new error("Usuário não encontrado");
+    throw new Error("Usuário não encontrado");
   };
 
   const posts = await findPostsByUserId(userId);
@@ -16,7 +16,7 @@ export const getUserWithPosts = async(userId) => {
 export const deleteUser = async(userId) => {
   const result = await deleteUserById(userId);
   if (!result) {
-    throw new error("Usuário não encontrado");
+    throw new Error("Usuário não encontrado");
   };
   logger.info(`Usuário deletado: ${userId}`);
   return result;
